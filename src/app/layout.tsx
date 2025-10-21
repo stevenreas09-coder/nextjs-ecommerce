@@ -3,7 +3,7 @@ import "./globals.css"
 import { Inter } from "next/font/google"
 import type { Metadata } from "next"
 import { cn } from "@/lib/utils"
-import { Footerbase } from "@/components/footer"
+import { Footer } from "@/components/footer"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn("bg-background min-h-screen font-sans antialiased", inter.variable)}>
         {children}
-       <Footerbase/>
+       <Footer/>
       </body>
     </html>
   )
