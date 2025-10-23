@@ -59,22 +59,22 @@ export default async function AdminDashbord() {
   return (
     <div className="px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <CardDashboard
-        className="h-[150px] backdrop-blur-md bg-black/20 border border-black/20 rounded-2xl shadow-lg"
+        className=" backdrop-blur-md bg-white/20 border border-black/20 rounded-2xl shadow-lg"
         title="Sales"
         description={`${formatNumber(salesData.numberOfSales)} Number of Order`}
         content={`Total Sales: ${formatCurrency(salesData.amount)}`}
       />
       <CardDashboard
-        className="h-[200px] backdrop-blur-md bg-green-500/20 border border-green-500/20 rounded-2xl shadow-lg"
+        className=" backdrop-blur-md bg-white/20 border border-black/20 rounded-2xl shadow-lg"
         title="Customers"
         description={formatCurrency(userData.averageValuePerUser)}
         content={`${formatNumber(userData.userCount)} Number of Customer`}
       />
       <CardDashboard
-        className="h-[400px] backdrop-blur-md bg-green-500/20 border border-green-500/20 rounded-2xl shadow-lg"
+        className=" backdrop-blur-md bg-white/20 border border-black/20 rounded-2xl shadow-lg"
         title="Active Products"
-        description={`${formatNumber(productData.inactiveCount)} Inactive User`}
-        content={`${formatNumber(productData.activeCount)} Active User`}
+        description={`${formatNumber(productData.inactiveCount)} Inactive`}
+        content={`${formatNumber(productData.activeCount)} Active`}
       />
     </div>
   );
