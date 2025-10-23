@@ -1,5 +1,6 @@
 "use client";
 
+import { Nav, NavLink } from "@/components/Nav";
 import { useState, useEffect } from "react";
 
 export default function CarSelector() {
@@ -22,22 +23,40 @@ export default function CarSelector() {
   }, [result]); // Runs when result changes
 
   return (
-    <div className="container h-[100vh] flex justify-center gap-2 items-center">
-      <div className={`${color} ${ color === "bg-white" ? "text-black" : "text-white" } p-4 rounded`}>{result}</div>
-      <form>
-        <select
-          onChange={(e) => setResult(e.target.value)}
-          name="cars"
-          id="cars"
-          className="p-2 border rounded"
+    <>
+      <NavHomepage />
+      <div className="container h-[100vh] flex justify-center gap-2 items-center">
+        <div
+          className={`${color} ${
+            color === "bg-white" ? "text-black" : "text-white"
+          } p-4 rounded`}
         >
-          <option value="select">-- Select a car --</option>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </form>
-    </div>
+          {result}
+        </div>
+        <form>
+          <select
+            onChange={(e) => setResult(e.target.value)}
+            name="cars"
+            id="cars"
+            className="p-2 border rounded"
+          >
+            <option value="select">-- Select a car --</option>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </form>
+      </div>
+    </>
+  );
+}
+
+function NavHomepage() {
+  return (
+    <Nav>
+      <NavLink href={"/admin"}>Admin</NavLink>
+      <NavLink href={"/"}>Home</NavLink>
+    </Nav>
   );
 }
