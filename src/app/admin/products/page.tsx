@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import db from "@/db/db";
-import {  CheckCircle2, MoreVertical, XCircle } from "lucide-react";
+import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
 import { formatCurrency } from "@/lib/formatters";
 import {
   DropdownMenu,
@@ -19,7 +19,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ActiveToggeDropdownItem, DeleteDropdownItem } from "./_components/productAction";
+import {
+  ActiveToggeDropdownItem,
+  DeleteDropdownItem,
+} from "./_components/productAction";
 
 export default function adminProductPage() {
   return (
@@ -72,12 +75,12 @@ async function ProductTable() {
               {product.isAvailableForPurchase ? (
                 <>
                   <span className="sr-only">Available</span>
-                  <CheckCircle2 className="stroke-green-500"/>
+                  <CheckCircle2 className="stroke-green-500" />
                 </>
               ) : (
                 <>
                   <span className="sr-only">Unavailable</span>
-                  <XCircle className="stroke-destructive"/>
+                  <XCircle className="stroke-destructive" />
                 </>
               )}
             </TableCell>
@@ -92,14 +95,30 @@ async function ProductTable() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuItem asChild>
-                    <a download href={`/admin/products/${product.id}/download`}>Download</a>
+                    <a
+                      download
+                      href={`/admin/products/${
+                        product.id
+                      }/download?name=${encodeURIComponent(product.name)}`}
+                    >
+                      Download
+                    </a>
                   </DropdownMenuItem>
+
                   <DropdownMenuItem asChild>
-                   <Link href={`/admin/products/${product.id}/edit`}>Edit</Link>
+                    <Link href={`/admin/products/${product.id}/edit`}>
+                      Edit
+                    </Link>
                   </DropdownMenuItem>
-                  <ActiveToggeDropdownItem id={product.id} isAvailableForPurchase={product.isAvailableForPurchase}/>
-                  <DropdownMenuSeparator/>
-                  <DeleteDropdownItem id={product.id} disabled={product._count.order > 0}/>
+                  <ActiveToggeDropdownItem
+                    id={product.id}
+                    isAvailableForPurchase={product.isAvailableForPurchase}
+                  />
+                  <DropdownMenuSeparator />
+                  <DeleteDropdownItem
+                    id={product.id}
+                    disabled={product._count.order > 0}
+                  />
                 </DropdownMenuContent>
               </DropdownMenu>
             </TableCell>

@@ -6,6 +6,7 @@ import db from "@/db/db"; // Prisma database instance
 import { z } from "zod"; // Validation library
 import fs from "fs/promises"; // Node.js file system API (Promise-based)
 import { notFound, redirect } from "next/navigation"; // Next.js navigation helpers
+import { revalidatePath } from "next/cache";
 
 /* -------------------------------------------------------------------------- */
 /*                              🔹 SCHEMA VALIDATION                          */
@@ -145,9 +146,9 @@ export async function updateProduct(
       imagePath,
     },
   });
-
+  revalidatePath("/")
   // Redirect to product list page
-  redirect("/admin/products");
+  redirect("/admin/products")
 }
 
 /* -------------------------------------------------------------------------- */
